@@ -37,13 +37,18 @@ void PrintArray(int[,] Array)
 int[,] MatrixMultiplication (int[,] Array1, int[,] Array2)
 {
     int [,] Array = new int [2,2];
-    for (int i = 0; i < Array.GetLength(0); i++)
-    {
-        for (int j = 0; j < Array.GetLength(1); j++)
+    for (var i = 0; i < Array1.GetLength(0); i++)
         {
-            Array[i,j] = Array1[i,j]*Array2[i,j] + Array1[i,j+1]*Array2[i+1,j];
+            for (var j = 0; j < Array1.GetLength(1); j++)
+            {
+                Array[i, j] = 0;
+
+                for (var k = 0; k < Array1.GetLength(1); k++)
+                {
+                    Array[i, j] += Array1[i, k] * Array2[k, j];
+                }
+            }
         }
-    }
     return Array;
 } 
 /*-----------------------------------------------------------------------*/
